@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="300" style="border:1px solid #d3d3d3;"></canvas>
+<script>
+    function Rectangle(length,width)
+    {
+        this.length = length;
+        this.width = width;
+        this.getArea = function(length,width){
+            return length*width;
+        };
+        this.getCircum =  function (length,width){
+            return (length + width)*2;
+        };
+        this.drawRectangle = function (length,width){
+            let c = document.getElementById("myCanvas");
+            let ctx = c.getContext("2d");
+            ctx.moveTo(0,0);
+            ctx.lineTo(length,0);
+            ctx.lineTo(length,width);
+            ctx.lineTo(0,width);
+            ctx.lineTo(0,0);
+            ctx.stroke();
+            ctx.lineWidth = 10;
+            ctx.strokeStyle = 'blue';
+
+        }
+    }
+    var myRec = new Rectangle(200,100);
+    myRec.drawRectangle(200,100);
+    document.write('<br>');
+    document.write("Area is : " + myRec.getArea(200,100));
+    document.write('<br>');
+    document.write("Circum is : " + myRec.getCircum(200,100));
+
+
+</script>
+</body>
+</html>
